@@ -1,5 +1,5 @@
 {
-  "name": "cesium-thales-app",
+  "name": "traceroute-vis",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -8,8 +8,7 @@
     "build": "npx webpack --config webpack.config.js",
     "docs": "npx typedoc --out docs src",
     "lint": "npx eslint ./src/ts --ext .ts",
-    "quicktestbuild": "npx tsc -p tsconfig.json --outdir src/jsfiles",
-    "test": "npx webpack --config webpack.config.test.js && npx karma start karma.conf.js --browsers ChromeHeadlessNoSandbox"
+    "quicktestbuild": "npx tsc -p tsconfig.json --outdir src/jsfiles"
   },
   "keywords": [],
   "author": "",

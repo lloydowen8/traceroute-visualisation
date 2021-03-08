@@ -1,5 +1,4 @@
 const path = require('path');
-const glob = require("glob");
 const webpack = require('webpack');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -13,10 +12,6 @@ const CopywebpackPlugin = require('copy-webpack-plugin');
 var entry = './src/ts/index.ts'
 var outputPath = path.resolve(__dirname, 'dist');
 
-if (process.env.TESTBUILD) {
-    entry = glob.sync(__dirname + "/test/**/*.test.ts");
-    outputPath = path.resolve(__dirname, 'test-dist');
-  }
 
 module.exports = {
     entry:entry ,
@@ -58,8 +53,7 @@ module.exports = {
                 { from: path.join(cesiumSource, cesiumWorkers), to: 'Workers' },
                 { from: path.join(cesiumSource, 'Assets'), to: 'Assets' },
                 { from: path.join(cesiumSource, 'Widgets'), to: 'Widgets' },
-                { from: "src/images", to: 'Images' },
-                { from: "./config.json", to: 'config.json' }
+                //{ from: "src/images", to: 'Images' },
             ],
             options: { concurrency: 50 },
         }),

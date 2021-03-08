@@ -29,8 +29,8 @@ html, body {
 }
 
 /* -- IMAGE/VIDEO -- */
-#vid{
-    /*width:50%;*/
+#sideBar{
+    width: 25%;
     height: 100vh;
     margin: 0;
     padding: 0;
@@ -41,60 +41,10 @@ html, body {
     overflow-y: auto;
 }
 
-#videoUploaded{
-    position: relative;
-    width: auto;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-}
-
-#previewImage{
-    height: auto;
-    background-color: transparent;
-    border-radius: 5px;
-    padding: 20px;
-    margin-right: 60px;
+.sideContainer{ 
+    margin: 20px;
 }
 
 .cesium-widget-credits{
     display: none !important;
-}
-
-.targetElement{ 
-    background-color: #282830;
-}
-
-.canvasContainer{ 
-    width: 100%;
-    height: auto;
-    max-width: inherit;
-    border: 2px solid #d7d7d9;
-    border-radius: 5px;
-    margin-bottom: 10px;
-}
-
-.canvasImages{ 
-    padding: 10px;
-    background-color: #282830;
-    border-radius: 5px;
-    margin-top: 10px;
-    display:flex;
-    justify-content: center;
-}
-
-.imageVideoCanvas{ 
-    height: auto;
-    width: 100%;
-    max-width: 25vw;
-    border: 2px solid #d7d7d9;
-    cursor: pointer;
-}
-
-.canvasLabels {
-    display:flex;
-    flex-direction: column;
-    padding: 10px;
-    background-color: #282830;
-    border-radius: 5px;
 }
