@@ -2,7 +2,7 @@
 //I cant figure out how this is not in aphabetical order...
 import * as Cesium from "cesium_source/Cesium";
 import { geoLocator} from "./ipGeolocator";
-
+import {ipLogger} from "./logger";
 
 /* eslint @typescript-eslint/no-magic-numbers: off */
 
@@ -44,46 +44,58 @@ const globallines = new Cesium.PolylineCollection();
  *
  * @param viewer -  viewer
  * @param ips -  the config for the application
+ * @returns the promise
  */
-export function applyConfig(viewer:Cesium.Viewer, ips: string[]): void{
-    Promise.all([geoLocator.getGeolocation(ips[0]), geoLocator.getGeolocation(ips[1])]).then(([point1, point2]) => {
+export async function applyConfig(viewer:Cesium.Viewer, ips: string[]): Promise<void>{
+    ipLogger.info("Getting location for: " + ips[0] + " -- " + ips[1]);
+    return Promise.all([geoLocator.getGeolocation(ips[0]), geoLocator.getGeolocation(ips[1])]).then(([point1, point2]) => {
         if(typeof point1 === "function"){
-            console.log("unable to parse repsonse for ip" + ips[0]);
+            ipLogger.warn("Unable to parse repsonse for ip" + ips[0]);
             return;
         }
         if(typeof point2 === "function"){
-            console.log("unable to parse repsonse for ip" + ips[1]);
+            ipLogger.warn("Unable to parse repsonse for ip" + ips[1]);
             return;
         }
         point1 = point1 as string[];
         point2 = point2 as string[];
+        let pointPrim1 = null;
+        let pointPrim2 = null;
         if(Number(point1[0]) == 0 || Number(point2[0]) == 0){
-            console.log("Unable to parse returned location");
-            return;
+            ipLogger.error("Unable to get location for: " + ips[0]);
+        } else {
+            ipLogger.info("Location for " + ips[0] + ": " + Number(point1[1]) + " " + Number(point1[0]));
+            pointPrim1 = globalPoints.add({
+                position: Cesium.Cartesian3.fromDegrees(Number(point1[1]), Number(point1[0])),
+                color: Cesium.Color.RED,
+                pixelSize: 10,
+            });
         }
-
-        const pointPrim1 = globalPoints.add({
-            position: Cesium.Cartesian3.fromDegrees(Number(point1[1]), Number(point1[0])),
-            color: Cesium.Color.RED,
-            pixelSize: 10,
-        });
-        const pointPrim2 = globalPoints.add({
-            position: Cesium.Cartesian3.fromDegrees(Number(point2[1]), Number(point2[0])),
-            color: Cesium.Color.RED,
-            pixelSize: 10,
-        });
-
-        globallines.add({
-            positions: [pointPrim1.position, pointPrim2.position],
-            width : 5.0,
-            material : new Cesium.Material({
-                fabric : {
-                    type : "Color",
-                    uniforms : {
-                        color : Cesium.Color.GREEN,
+        if(Number(point2[0]) == 0){
+            ipLogger.error("Unable to get location for: " + ips[1]);
+        } else {
+            ipLogger.info("Location for " + ips[1] + ": " + point2[1] + " " + point2[0]);
+            pointPrim2 = globalPoints.add({
+                position: Cesium.Cartesian3.fromDegrees(Number(point2[1]), Number(point2[0])),
+                color: Cesium.Color.RED,
+                pixelSize: 10,
+            });
+        }
+        if(pointPrim1 && pointPrim2){
+            globallines.add({
+                positions: [pointPrim1.position, pointPrim2.position],
+                width : 5.0,
+                material : new Cesium.Material({
+                    fabric : {
+                        type : "Color",
+                        uniforms : {
+                            color : Cesium.Color.GREEN,
+                        },
                     },
-                },
-            }),
-        });
+                }),
+            });
+        } else {
+            ipLogger.warn("Can't draw line because one is the points hasn't got a location");
+        }
     });
 }

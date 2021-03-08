@@ -24,7 +24,7 @@ export class ConfigHandler{
      *
      * @param rawFile -
      */
-    createAndAplyConfig(rawFile: string): void {
+    async createAndAplyConfig(rawFile: string){
         const rows = rawFile.split("\n");
         //Console.log(rows);
         for(const row of rows){
@@ -33,7 +33,7 @@ export class ConfigHandler{
             for(const ip of ips){
                 ipRow.push(ip.slice(1, ip.length - 1));
             }
-            applyConfig(this.viewer, ipRow);
+            await applyConfig(this.viewer, ipRow);
         }
     }
 

@@ -48,3 +48,40 @@ html, body {
 .cesium-widget-credits{
     display: none !important;
 }
+
+/* Logger */
+#loggercontainer { 
+    width: 95%; 
+    height: 85vh;
+    display: block;
+    margin: auto;
+    background-color: #282830;
+    overflow-y: auto;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+#log-info {
+    color:aqua;
+}
+
+#log-error {
+    color:orange;
+}
+
+#log-fatal {
+    color:red;
+}
+
+#log-warning {
+    color:yellow;
+}
+
+#log-debug {
+    color:lawngreen;
+}
+
+#log-general {
+    color:white;
+}
+
