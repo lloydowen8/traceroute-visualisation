@@ -22,8 +22,9 @@ export class ConfigHandler{
     /**
      * Apply the config object to associated viewer
      *
-     * @param rawFile -
+     * @param rawFile - A stringified traceroutemap
      */
+    // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
     async createAndAplyConfig(rawFile: string){
         const rows = rawFile.split("\n");
         //Console.log(rows);
