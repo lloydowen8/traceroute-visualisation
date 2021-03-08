@@ -31,6 +31,17 @@ npm run start
 ```
 That installs all the required packages and starts a server on [localhost:8080](localhost:8080).  Due to using webpack, this also has hot-reloading.
 
+The tracefile file should be in the following format: 
+```
+graph routertopology { 
+"123.456.78.90" -- "234.567.89.01"
+...
+...
+...
+"345.678.901.23" -- "456.789.01.23"
+}
+```
+
 To build the project, run:
 ```
 npm run build
