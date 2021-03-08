@@ -1,0 +1,259 @@
+:root {
+    --ces-sidebar-width: 300px;
+}
+
+/* Sidebar Buttons */
+.slidingMenuButton{
+    width: 50px;
+    height: 50px;
+    background-color: #373740;
+    opacity: 1.0;
+    position: relative;
+    left: calc( 0px - (var(--ces-sidebar-width) + 75px));/*calc( 0 - var(--ces-sidebar-width) - 75px);*/ /*-70 -340*/
+    top: 10px;
+    display: inline-block;
+    padding: 5px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.slidingMenuButton:hover{
+    background-color: #4a4a52;
+}
+
+.slidingMenuButton img{
+    width: 100%;
+    height: 100%;
+    margin: auto auto;
+    padding: 0;
+}
+
+.selectedButton{
+    background-color: #4a4a52;
+    border-top-color: #1eb980;
+    border-top-width: 3px;
+    border-top-style: solid;
+    border-bottom-color: #1eb980;
+    border-bottom-width: 3px;
+    border-bottom-style: solid;
+
+    border-color: #1ba773ff;
+    border-width: 3px;
+    border-style: solid;
+
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.notSelectedButton{
+    border-top: none;
+    background-color: #373740;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    right: -10px;
+}
+
+#sideBarSlidersButtonContainer{
+    position: fixed;
+    transition-duration: 0.5s;
+    z-index: 2;
+    width: 50px;
+}
+
+
+/* Sidebar General */
+.sideBarContents{
+    width: var(--ces-sidebar-width);
+    margin-left: 0px;
+    position: absolute;
+    padding: 10px 20px 10px 10px;
+    background-color: #373740; 
+    transition-duration: 0.5s;
+    display: inline-block;
+    color: #d7d7d9;
+    font-family: Helvetica, 'Roboto Slab', serif;
+    border-left-color: #1ba773ff;
+    border-left-width: 3px;
+    border-left-style: solid;
+    border-right: none;
+    overflow-y: auto;
+}
+
+.sideBarClosed, .buttonsClosed{
+    right:  calc(0px - (var(--ces-sidebar-width) + 60px)); /*calc( 0px - calc(var(--ces-sidebar-width) + 60px));*/ /* -510px;*/
+}
+
+.buttonsOpen {
+    right:0px;
+}
+
+.sideBarOpen{
+    right: 0px;
+    bottom: 0px;
+    top: 0px;
+}
+
+#sideBarSlidersContainer{
+    position: fixed;
+    transition-duration: 0.5s;
+    width: calc(var(--ces-sidebar-width) + 35px);
+    height: 100%;
+    z-index: 2;
+}
+
+#sideBarSlidersContainer input {
+    background-color: #33333d;
+    border-radius: 5px;
+    color: #d7d7d9;
+}
+
+#sideBarSlidersContainer h3 {
+    text-align: center;
+    font-weight: bold;
+}
+
+#sideBarFovOptions{
+    display: inline;
+}
+
+
+/* -- SLIDERS -- */
+.slidecontainer {
+    width: 100%; 
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 5px;
+    background-color: #33333d;
+    padding: 5px;
+    font-family: Helvetica;
+    border-radius: 5px;
+}
+
+.slidecontainer > h1 {
+    text-align: center;
+}
+  
+.slider {
+    width: 98%; 
+    height: 25px; 
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+}
+
+
+/* Target List Manager */
+#ManagerContainer .targetElement {
+    padding: 5px;
+    border-radius: 5px;
+    margin-bottom: 5px;
+}
+
+.removePoint {
+    color: red;
+    cursor: pointer;
+    font-weight: 700;
+    text-align: center;
+}
+
+.removePoint:hover{
+    background-color: #4a4a52;
+}
+
+
+/* Logger */
+#loggercontainer { 
+    width: 95%; 
+    height: 85vh;
+    display: block;
+    margin: auto;
+    background-color: #282830;
+    overflow-y: auto;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+#log-info {
+    color:aqua;
+}
+
+#log-error {
+    color:orange;
+}
+
+#log-fatal {
+    color:red;
+}
+
+#log-warning {
+    color:yellow;
+}
+
+#log-debug {
+    color:lawngreen;
+}
+
+#log-general {
+    color:white;
+}
+
+#log-video {
+    color:cornflowerblue;
+}
+
+#log-image {
+    color:mediumpurple;
+}
+
+#log-fov {
+    color:goldenrod;
+}
+
+#log-vgip {
+    color:tomato;
+}
+
+/* Add Object */
+
+.objectOption {
+    display: flex;
+    flex-direction: row;
+}
+
+.objectOption > label {
+    text-align: right;
+    width:10vw;
+    margin-right: 5px;
+}
+
+#submitFov, #submitPoint {
+    padding: 5px 20px 5px 20px;
+    margin-left: 50%;
+    font-weight: 700;
+    font-size: 1em;
+}
+
+#submitFov:hover {
+    background-color: #4a4a52;
+    cursor: pointer;
+}
+
+#selectedPoint { 
+    color: orange;
+}
+
+.selectedDiv{ 
+    border-color: #1ba773ff;
+    border-width: 3px;
+    border-style: solid;
+}
+
+.selectElement { 
+    cursor: pointer;
+}
+
+#selectedFOV { 
+    color: red;
+}
