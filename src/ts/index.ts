@@ -5,5 +5,3 @@ import {GeneralLogger} from "./logger";
 GeneralLogger.info("Everything imported correctly");
 
 require("./main");
-
-export const apiKey = "5e890a77d73b198f89900ec7652d7267";

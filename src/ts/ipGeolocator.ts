@@ -1,5 +1,3 @@
-import { apiKey } from ".";
-
 /**
  * Class used to find the location of ip addresses
  */
@@ -7,6 +5,7 @@ export class ipGeolocator {
     apiKey: string;
     constructor(key:string){
         this.apiKey = key;
+        console.log(key);
     }
 
     /**
@@ -23,5 +22,3 @@ export class ipGeolocator {
             });
     }
 }
-
-export const geoLocator = new ipGeolocator(apiKey);

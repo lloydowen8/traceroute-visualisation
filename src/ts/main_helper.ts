@@ -1,8 +1,8 @@
 /* eslint-disable sort-imports */
 //I cant figure out how this is not in aphabetical order...
 import * as Cesium from "cesium_source/Cesium";
-import { geoLocator} from "./ipGeolocator";
 import {ipLogger} from "./logger";
+import {geoLocator} from "./main";
 
 /* eslint @typescript-eslint/no-magic-numbers: off */
 
@@ -61,10 +61,10 @@ export async function applyConfig(viewer:Cesium.Viewer, ips: string[]): Promise<
         point2 = point2 as string[];
         let pointPrim1 = null;
         let pointPrim2 = null;
-        if(Number(point1[0]) == 0 || Number(point2[0]) == 0){
+        if(Number(point1[0]) == 0){
             ipLogger.error("Unable to get location for: " + ips[0]);
         } else {
-            ipLogger.info("Location for " + ips[0] + ": " + Number(point1[1]) + " " + Number(point1[0]));
+            ipLogger.info("Location for " + ips[0] + ": " + point1[1] + " " + point1[0]);
             pointPrim1 = globalPoints.add({
                 position: Cesium.Cartesian3.fromDegrees(Number(point1[1]), Number(point1[0])),
                 color: Cesium.Color.RED,
