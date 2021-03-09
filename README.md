@@ -21,7 +21,7 @@ This tool uses the ipstack API to get coordinates for IP addresses along a trace
 (All open source)
 
 ## Running Instructions
-First you need to set the ```apiKey``` field in the main.js file to your personal API key.
+First you need to set the ```apiKey``` field in the main.ts file to your personal API key.
 
 To run, make sure you have node(npm) > 6.0.0 (https://nodejs.org/en/), the most recent one will work well, then open a terminal at the directory and run
 ```
